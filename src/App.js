@@ -1,6 +1,19 @@
 import React from 'react';
 
-import todoList from './components/TodoComponents/Todo'
+import TodoList from './components/TodoComponents/TodoList';
+
+const todoList = [
+  {
+      task: "Organize Garage",
+      id: 1528817077286,
+      completed: false
+  },
+  {
+      task: "Bake Cookies",
+      id: 1528817084358,
+      completed: false
+  }
+];
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -15,28 +28,13 @@ class App extends React.Component {
     };
   }
 
-  addTodo = e => {
-    e.preventDefault();
-    // setState with new list item at the end of the array
-    const newTodo = {
-      task: this.state.task,
-      id: this.state.id,
-      completed: this.state.completed
-    };
-    this.setState({
-      todoList: [...this.state.todoList, newTodo],
-      task: "",
-      id: "",
-      completed: false
-    });
-  };
-
-  
-
   render() {
     return (
       <div className="todo-container">
         <h2>Todo List MVP</h2>
+        <div>
+          <TodoList todoList={todoList} />
+        </div>
       </div>
     );
   }
