@@ -32,9 +32,9 @@ class App extends React.Component {
     return (
       <div className="todo-container">
         <h2>Todo List MVP</h2>
-        <div>
+        <section>
           <TodoList todoList={todoList} />
-        </div>
+        </section>
       </div>
     );
   }
