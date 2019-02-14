@@ -1,6 +1,7 @@
 import React from 'react';
 
 import TodoList from './components/TodoComponents/TodoList';
+import TodoForm from './components/TodoComponents/TodoForm';
 
 const todoList = [
   {
@@ -28,12 +29,44 @@ class App extends React.Component {
     };
   }
 
+  addTask = e => {
+    e.preventDefault();
+    // setState with new task at the end of the array
+    const newTask = {
+      task: this.state.task,
+      id: {},
+      completed: false
+    };
+    this.setState({
+      todoList: [...this.state.todoList, newTask],
+      task: "",
+      id: {},
+      completed: false,
+      addTask: ""
+    })
+  };
+
+  handleChanges = e => {
+    this.setState({
+      [e.target.task]: e.target.value
+    });
+  };
+
   render() {
     return (
       <div className="todo-container">
         <h2>Todo List MVP</h2>
         <section>
           <TodoList todoList={todoList} />
+        </section>
+        <section>
+          <TodoForm 
+          addTask={this.state.addTask}
+          handleChanges={this.handleChanges}
+          task={this.state.task}
+          id={Date.now()}
+          completed={false}
+          />
         </section>
       </div>
     );
